@@ -1,10 +1,13 @@
 package com.example.activities.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.util.Date;
 
 @Entity
 @Table(name ="activity")
-public class Activity {
+public class ActivityEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -12,18 +15,19 @@ public class Activity {
     private String name;
     @Column
     private String description;
-    @Column
-    private long duration;
+    @CreationTimestamp
+    @Column(nullable = false,updatable = false)
+    private Date duration;
     @Column
     private float price;
 
-        public Activity() {
+        public ActivityEntity() {
     }
 
-    public Activity(String name, String description, long duration, float price) {
+    public ActivityEntity(String name, String description, /*long duration,*/ float price) {
         this.name = name;
         this.description = description;
-        this.duration = duration;
+        //this.duration = duration;
         this.price = price;
     }
 
@@ -51,13 +55,13 @@ public class Activity {
         this.description = description;
     }
 
-    public long getDuration() {
+    public Date getDuration() {
         return duration;
     }
 
-    public void setDuration(long duration) {
-        this.duration = duration;
-    }
+//    public void setDuration(long duration) {
+//        this.duration = duration;
+//    }
 
     public float getPrice() {
         return price;

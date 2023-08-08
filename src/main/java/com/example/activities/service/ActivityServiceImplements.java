@@ -1,6 +1,6 @@
 package com.example.activities.service;
 
-import com.example.activities.entity.Activity;
+import com.example.activities.entity.ActivityEntity;
 import com.example.activities.repository.ActivityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,12 +15,12 @@ public class ActivityServiceImplements implements ActivityService {
 
     @Autowired
     ActivityRepository repo;
-    public Activity createActivity(Activity act) {
+    public ActivityEntity createActivity(ActivityEntity act) {
         return repo.save(act);
     }
 
     @Override
-    public List<Activity> getAllActivity() {
+    public List<ActivityEntity> getAllActivity() {
         //List<Activity> Activities=new ArrayList<Activity>();
         //repo.findAll().forEach(Act->Activities.add(Act));
         //return Activities;
@@ -28,13 +28,19 @@ public class ActivityServiceImplements implements ActivityService {
     }
 
     @Override
-    public Activity getById(int actId) {
+    public ActivityEntity getById(int actId) {
         return repo.findById(actId).orElse(null);
     }
 
     @Override
-    public List<Activity> getByName(String name) {
-        List<Activity> ans = repo.getByName(name);
+    public List<ActivityEntity> getByName(String name) {
+        List<ActivityEntity> ans = repo.getByName(name);
         return ans;
     }
+
+    @Override
+    public void deleteActivity(int id) {
+        repo.deleteById(id);
+    }
+
 }

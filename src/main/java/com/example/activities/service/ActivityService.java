@@ -1,7 +1,7 @@
 package com.example.activities.service;
 
 
-import com.example.activities.entity.Activity;
+import com.example.activities.entity.ActivityEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,17 +9,17 @@ import java.util.List;
 @Service
 public interface ActivityService {
     //create/insert , list , get by name , delete
-    public default Activity createActivity(Activity act) {
+    public default ActivityEntity createActivity(ActivityEntity act) {
         return null;
     }
-    public default List<Activity> getAllActivity(){
+    public default List<ActivityEntity> getAllActivity(){
         return null;
     }
-    public default Activity getById(int actId ){
+    public default ActivityEntity getById(int actId ){
         return null;
     }
-    public default List<Activity> getByName(String name){
+    public default List<ActivityEntity> getByName(String name){
      return null;
     }
-
+    public void deleteActivity(int id);
 }
