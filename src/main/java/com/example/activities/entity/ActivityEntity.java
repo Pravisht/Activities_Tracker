@@ -15,9 +15,9 @@ public class ActivityEntity {
     private String name;
     @Column
     private String description;
-    @CreationTimestamp
+    //@CreationTimestamp
     @Column(nullable = false,updatable = false)
-    private Date duration;
+    private long duration;
     @Column
     private float price;
 
@@ -56,12 +56,12 @@ public class ActivityEntity {
     }
 
     public Date getDuration() {
-        return duration;
+        return new Date(duration);
     }
 
-//    public void setDuration(long duration) {
-//        this.duration = duration;
-//    }
+    public void setDuration(Date duration) {
+        this.duration = duration.getTime();
+    }
 
     public float getPrice() {
         return price;
